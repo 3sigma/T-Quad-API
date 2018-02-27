@@ -4,46 +4,11 @@
 	"plugins": [],
 	"panes": [
 		{
-			"title": "Vitesses moteurs",
-			"width": 1,
-			"row": {
-				"3": 1,
-				"4": 15
-			},
-			"col": {
-				"3": 2,
-				"4": 2
-			},
-			"col_width": "2",
-			"widgets": [
-				{
-					"type": "plot",
-					"settings": {
-						"xaxis": "datasource_column",
-						"time": "datasources[\"ws\"][\"Temps\"]",
-						"time_window": 10,
-						"value": [
-							"datasources[\"ws\"][\"omegaArriereDroit\"]",
-							"datasources[\"ws\"][\"omegaArriereGauche\"]",
-							"datasources[\"ws\"][\"omegaAvantDroit\"]",
-							"datasources[\"ws\"][\"omegaAvantGauche\"]"
-						],
-						"y_axis_min_range": "-1,1",
-						"y2_axis_min_range": "-10,10",
-						"include_legend": true,
-						"legendStr": "Arrière droit,Arrière gauche,Avant droit,Avant gauche",
-						"height": 4,
-						"pausable": true
-					}
-				}
-			]
-		},
-		{
 			"title": "Angle",
 			"width": 1,
 			"row": {
 				"3": 5,
-				"4": 1
+				"4": 5
 			},
 			"col": {
 				"3": 1,
@@ -71,11 +36,42 @@
 			]
 		},
 		{
+			"title": "Démarrage",
+			"width": 1,
+			"row": {
+				"3": 1,
+				"4": 1
+			},
+			"col": {
+				"3": 1,
+				"4": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "sshcommand",
+					"settings": {
+						"title": "Marche / arrêt de l'application",
+						"style": "switch",
+						"host": "192.168.0.199",
+						"login": "root",
+						"password": "tquad",
+						"oncommand": "/root/programmes_python/startQuatreRoues_API.sh",
+						"offcommand": "/root/programmes_python/stopPython_FSM.sh",
+						"ontext": "ON",
+						"offtext": "OFF",
+						"initialstate": false,
+						"caption": "Switch ON"
+					}
+				}
+			]
+		},
+		{
 			"title": "Etat capteurs suivi de ligne",
 			"width": 1,
 			"row": {
 				"3": 15,
-				"4": 11
+				"4": 15
 			},
 			"col": {
 				"3": 1,
@@ -144,29 +140,38 @@
 			]
 		},
 		{
-			"title": "Moniteur",
+			"title": "Vitesses moteurs",
 			"width": 1,
 			"row": {
-				"3": 23,
-				"4": 23,
-				"5": 23,
-				"6": 23
-			},
-			"col": {
 				"3": 1,
 				"4": 1,
-				"5": 1,
-				"6": 1
+				"5": 15
 			},
-			"col_width": "1",
+			"col": {
+				"3": 2,
+				"4": 2,
+				"5": 2
+			},
+			"col_width": "2",
 			"widgets": [
 				{
-					"type": "textarea",
+					"type": "plot",
 					"settings": {
-						"nblines_window": "10",
+						"xaxis": "datasource_column",
+						"time": "datasources[\"ws\"][\"Temps\"]",
+						"time_window": 10,
 						"value": [
-							"datasources[\"ws\"][\"Raw\"]"
-						]
+							"datasources[\"ws\"][\"omegaArriereDroit\"]",
+							"datasources[\"ws\"][\"omegaArriereGauche\"]",
+							"datasources[\"ws\"][\"omegaAvantDroit\"]",
+							"datasources[\"ws\"][\"omegaAvantGauche\"]"
+						],
+						"y_axis_min_range": "-1,1",
+						"y2_axis_min_range": "-10,10",
+						"include_legend": true,
+						"legendStr": "Arrière droit,Arrière gauche,Avant droit,Avant gauche",
+						"height": 4,
+						"pausable": true
 					}
 				}
 			]
@@ -176,11 +181,15 @@
 			"width": 1,
 			"row": {
 				"3": 21,
-				"5": 21
+				"4": 21,
+				"5": 21,
+				"6": 21
 			},
 			"col": {
 				"3": 2,
-				"5": 2
+				"4": 2,
+				"5": 2,
+				"6": 2
 			},
 			"col_width": "2",
 			"widgets": [
@@ -206,30 +215,31 @@
 			]
 		},
 		{
-			"title": "Démarrage",
+			"title": "Moniteur",
 			"width": 1,
 			"row": {
-				"3": 1
+				"3": 23,
+				"4": 23,
+				"5": 23,
+				"6": 23,
+				"7": 23
 			},
 			"col": {
-				"3": 1
+				"3": 1,
+				"4": 1,
+				"5": 1,
+				"6": 1,
+				"7": 1
 			},
-			"col_width": 1,
+			"col_width": "1",
 			"widgets": [
 				{
-					"type": "sshcommand",
+					"type": "textarea",
 					"settings": {
-						"title": "Marche / arrêt de l'application",
-						"style": "switch",
-						"host": "192.168.0.199",
-						"login": "root",
-						"password": "tquad",
-						"oncommand": "/root/programmes_python/startQuatreRoues_API.sh",
-						"offcommand": "/root/programmes_python/stopPython_FSM.sh",
-						"ontext": "ON",
-						"offtext": "OFF",
-						"initialstate": false,
-						"caption": "Switch ON"
+						"nblines_window": "10",
+						"value": [
+							"datasources[\"ws\"][\"Raw\"]"
+						]
 					}
 				}
 			]
@@ -248,5 +258,5 @@
 			}
 		}
 	],
-	"columns": 3
+	"columns": 4
 }
